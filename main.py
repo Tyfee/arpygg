@@ -95,18 +95,18 @@ def midi_thread_function():
    if port_name != 'none':
     if len(playing_notes) > 0:
      with mido.open_output(port_name) as port:
-        while playing.get():  # Add your loop condition here
+        while playing.get():  
             for notee in playing_notes:
                 note_on = Message('note_on', note=note_map[notee], velocity=velocity_value)
                 port.send(note_on)
                 active_notes.append(notee)
-                update_rectangles()  # Assuming you have a function to update visuals
+                update_rectangles() 
                 print(active_notes)
                 time.sleep(delay_value)
 
                 note_off = Message('note_off', note=note_map[notee])
                 active_notes.remove(notee) if notee in active_notes else print('not there')
-                update_rectangles()  # Assuming you have a function to update visuals
+                update_rectangles() 
                 print(notee)
                 port.send(note_off)
 
@@ -151,12 +151,11 @@ def on_combobox_select(event):
     selected_value = combobox.get()
     print(f'Selected value: {selected_value}')
     port_name = selected_value
-    # Set the focus back to the root window (or any other widget of your choice)
     root.focus_set()
 
 
 def save_preset():
-    initial_dir = os.path.join(os.getcwd(), 'presets')  # Set the initial directory
+    initial_dir = os.path.join(os.getcwd(), 'presets') 
     file_path = filedialog.asksaveasfilename(
         initialdir=initial_dir,
         defaultextension=".arp",
@@ -264,7 +263,7 @@ selected_value = tk.StringVar()
 combobox = ttk.Combobox(root,  textvariable=selected_value, width=40, state="readonly")
 combobox.bind('<<ComboboxSelected>>', on_combobox_select)
 
-combobox['values'] = all_midi_outputs  # Set the values for the dropdown
+combobox['values'] = all_midi_outputs 
 combobox.set('MIDI Output') 
 combobox.pack(pady=10)
 
@@ -281,11 +280,10 @@ def on_backspace(event):
 
 
 def update_rectangles():
-    canvas.delete("all")  # Clear the canvas
-
+    canvas.delete("all")  
     for index, note in enumerate(notes):
        x1 = 85 + (index * 28)
-       x2 = x1 + 30  # Assuming each rectangle has a width of 30
+       x2 = x1 + 30 
        y1, y2 = 50, 150
 
        fill_color = "red" if note in active_notes else "white"
@@ -305,7 +303,7 @@ def update_rectangles():
         x1 = 243 
        else:
         x1 = 110 + (index * 42)
-       x2 = x1 + 20  # Assuming each rectangle has a width of 30
+       x2 = x1 + 20  
        y1, y2 = 50, 100
 
        fill_color = "red" if note in active_notes else "black"
