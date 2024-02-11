@@ -1,5 +1,5 @@
-
-Arpygg is a extremely simple arpeggiator writen in python on top of the mido library. 
+# What is it
+Arpygg is an extremely simple arpeggiator writen in python on top of the mido library. 
 
 ![Alt Text](https://tyfee.github.io/portfolio/sub/arpygg/sc.png)
 
@@ -7,5 +7,5 @@ It allows you to send pre programmed sets of notes through a virtual midi port t
 
 The GUI was completely written in Tkinter, allowing the program to be executed in both Windows and Linux platforms. Download the source code or the installer and start using it!
 
---- IMPORTANT ---
+### IMPORTANT
 Due to rtmidi limitations, in windows systems, it is necessary to install a third party for virtual ports, i recommend loopMIDI.
